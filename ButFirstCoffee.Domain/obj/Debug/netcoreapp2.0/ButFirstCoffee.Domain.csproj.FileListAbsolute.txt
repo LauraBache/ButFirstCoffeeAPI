@@ -1,0 +1,9 @@
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Domain\bin\Debug\netcoreapp2.0\ButFirstCoffee.Domain.deps.json
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Domain\bin\Debug\netcoreapp2.0\ButFirstCoffee.Domain.dll
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Domain\bin\Debug\netcoreapp2.0\ButFirstCoffee.Domain.pdb
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Domain\obj\Debug\netcoreapp2.0\ButFirstCoffee.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Domain\obj\Debug\netcoreapp2.0\ButFirstCoffee.Domain.AssemblyInfoInputs.cache
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Domain\obj\Debug\netcoreapp2.0\ButFirstCoffee.Domain.AssemblyInfo.cs
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Domain\obj\Debug\netcoreapp2.0\ButFirstCoffee.Domain.dll
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Domain\obj\Debug\netcoreapp2.0\ButFirstCoffee.Domain.pdb
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Domain\obj\Debug\netcoreapp2.0\ButFirstCoffee.Domain.csprojResolveAssemblyReference.cache
