@@ -4,6 +4,7 @@ using ButFirstCoffee.Data;
 using ButFirstCoffee.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace ButFirstCoffee.API.Controllers
 {
@@ -25,27 +26,27 @@ namespace ButFirstCoffee.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]OrderItemViewModel model)
         {
-            //try
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        var newItem = _mapper.Map<OrderItemViewModel, OrderItem>(model);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var newItem = _mapper.Map<OrderItemViewModel, OrderItem>(model);
 
-            //        var addedOrderItem = _orderItemRepo.AddOrderItem(newItem);
+                    var addedOrderItem = _orderItemRepo.AddOrderItem(newItem);
 
-            //        return Created($"/api/orders/{createdOrder.Id}", _mapper.Map<Order, OrderViewModel>(createdOrder));
-            //    }
-            //    else
-            //    {
-            //        return BadRequest(ModelState);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    _logger.LogError($"Failed to get order: {ex}");
+                    return Created($"/api/orders/{addedOrderItem.OrderId}/items/{addedOrderItem.Id}", _mapper.Map<OrderItem, OrderItemViewModel>(addedOrderItem));
+                }
+                else
+                {
+                    return BadRequest(ModelState);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get order: {ex}");
 
-            //    return BadRequest("Failed to get order");
-            //}
+                return BadRequest("Failed to get order");
+            }
             return null;
         }
 

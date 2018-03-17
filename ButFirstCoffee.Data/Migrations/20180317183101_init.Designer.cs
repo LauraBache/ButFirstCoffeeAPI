@@ -12,8 +12,8 @@ using System;
 namespace ButFirstCoffee.Data.Migrations
 {
     [DbContext(typeof(CoffeeContext))]
-    [Migration("20180313151809_initial")]
-    partial class initial
+    [Migration("20180317183101_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,11 +27,11 @@ namespace ButFirstCoffee.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CategoryId");
+                    b.Property<int>("CategoryId");
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("DetailedDescription");
 
                     b.Property<decimal>("Price");
 
@@ -78,7 +78,7 @@ namespace ButFirstCoffee.Data.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("DetailedDescription");
 
                     b.Property<decimal>("Price");
 
@@ -106,11 +106,11 @@ namespace ButFirstCoffee.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("BeverageId");
+                    b.Property<int>("BeverageId");
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("OrderId");
+                    b.Property<int>("OrderId");
 
                     b.Property<int>("Quantity");
 
@@ -147,18 +147,19 @@ namespace ButFirstCoffee.Data.Migrations
                 {
                     b.HasOne("ButFirstCoffee.Domain.BeverageCategory", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ButFirstCoffee.Domain.BeverageSale", b =>
                 {
-                    b.HasOne("ButFirstCoffee.Domain.Beverage")
-                        .WithMany("Sales")
+                    b.HasOne("ButFirstCoffee.Domain.Beverage", "Beverage")
+                        .WithMany("BeverageSales")
                         .HasForeignKey("BeverageId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ButFirstCoffee.Domain.Sale")
-                        .WithMany("Beverages")
+                    b.HasOne("ButFirstCoffee.Domain.Sale", "Sale")
+                        .WithMany("BeverageSales")
                         .HasForeignKey("SaleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -167,11 +168,13 @@ namespace ButFirstCoffee.Data.Migrations
                 {
                     b.HasOne("ButFirstCoffee.Domain.Beverage", "Beverage")
                         .WithMany()
-                        .HasForeignKey("BeverageId");
+                        .HasForeignKey("BeverageId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ButFirstCoffee.Domain.Order", "Order")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId");
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

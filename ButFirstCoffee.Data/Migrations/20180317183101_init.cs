@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ButFirstCoffee.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +29,7 @@ namespace ButFirstCoffee.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    DetailedDescription = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
@@ -73,9 +73,9 @@ namespace ButFirstCoffee.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CategoryId = table.Column<int>(nullable: true),
+                    CategoryId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    DetailedDescription = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
@@ -86,7 +86,7 @@ namespace ButFirstCoffee.Data.Migrations
                         column: x => x.CategoryId,
                         principalTable: "BeverageCategories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -121,9 +121,9 @@ namespace ButFirstCoffee.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BeverageId = table.Column<int>(nullable: true),
+                    BeverageId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    OrderId = table.Column<int>(nullable: true),
+                    OrderId = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     UnitPrice = table.Column<decimal>(nullable: false)
                 },
@@ -135,13 +135,13 @@ namespace ButFirstCoffee.Data.Migrations
                         column: x => x.BeverageId,
                         principalTable: "Beverages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderItems_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

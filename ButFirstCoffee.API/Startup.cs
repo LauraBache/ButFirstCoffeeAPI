@@ -66,11 +66,12 @@ namespace ButFirstCoffee.API
                 app.UseCors((cors) => cors.AllowAnyOrigin());
             }
 
-            if(env.IsProduction())
+            app.UseCors((cors) => cors.AllowAnyOrigin());
+            if (env.IsProduction())
             {
                 //TODO - implement customer frindly error handling
 
-                //app.UseCors((cors) => cors.WithOrigins("AZURE WEBAPI URL")); TODO replace AZURE WEBAPI URL with a setting, that can be overridden
+               // app.UseCors((cors) => cors.WithOrigins("Angular app URL")); //TODO replace AZURE WEBAPI URL with a setting, that can be overridden
             }
 
             app.UseMvc();

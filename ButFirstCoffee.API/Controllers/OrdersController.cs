@@ -59,7 +59,7 @@ namespace ButFirstCoffee.API.Controllers
 
                     var createdOrder = _orderRepo.CreateOrder(newOrder);
 
-                    return Created($"/api/orders/{createdOrder.Id}", _mapper.Map<Order, OrderViewModel > (createdOrder));
+                    return Created($"/api/orders/{createdOrder.Id}", _mapper.Map<Order, OrderViewModel>(createdOrder));
                 }
                 else
                 {
