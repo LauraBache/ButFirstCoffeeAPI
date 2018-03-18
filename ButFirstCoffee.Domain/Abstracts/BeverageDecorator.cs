@@ -3,7 +3,7 @@
 namespace ButFirstCoffee.Domain
 {
     [NotMapped]
-    public abstract class CondimentDecorator: BeverageComponent
+    public abstract class BeverageDecorator: BeverageComponent
     {
         public abstract string GetDescription();
     }

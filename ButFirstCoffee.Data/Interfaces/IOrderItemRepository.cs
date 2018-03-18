@@ -6,6 +6,7 @@ namespace ButFirstCoffee.Data
     {
         OrderItem AddOrderItem(OrderItem item);
         void DeleteOrderItem(OrderItem item);
-        OrderItem UpdateOrderItem(OrderItem item, int condimentId);
+        OrderItem GetOrderItemWithBeverageAndSale(int itemId);
+        OrderItem UpdateOrderItemWithCondiment(OrderItem item, Condiment condiment);
     }
 }

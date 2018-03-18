@@ -1,0 +1,11 @@
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\bin\Release\netcoreapp2.0\ButFirstCoffee.Data.deps.json
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\bin\Release\netcoreapp2.0\ButFirstCoffee.Data.dll
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\bin\Release\netcoreapp2.0\ButFirstCoffee.Data.pdb
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\bin\Release\netcoreapp2.0\ButFirstCoffee.Domain.dll
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\bin\Release\netcoreapp2.0\ButFirstCoffee.Domain.pdb
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\obj\Release\netcoreapp2.0\ButFirstCoffee.Data.csprojResolveAssemblyReference.cache
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\obj\Release\netcoreapp2.0\ButFirstCoffee.Data.csproj.CoreCompileInputs.cache
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\obj\Release\netcoreapp2.0\ButFirstCoffee.Data.AssemblyInfoInputs.cache
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\obj\Release\netcoreapp2.0\ButFirstCoffee.Data.AssemblyInfo.cs
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\obj\Release\netcoreapp2.0\ButFirstCoffee.Data.dll
+C:\Users\Laura Bache\source\repos\ButFirstCoffee\ButFirstCoffee.Data\obj\Release\netcoreapp2.0\ButFirstCoffee.Data.pdb

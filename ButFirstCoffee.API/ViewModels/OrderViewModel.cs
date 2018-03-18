@@ -8,7 +8,8 @@ namespace ButFirstCoffee.API.ViewModels
 {
     public class OrderViewModel
     {
-        public int OrderId { get; set; }
+        public int? OrderId { get; set; }
+        [Required]
         public DateTime OrderDate { get; set; }
         [Required]
         public IEnumerable<OrderItemViewModel> OrderItems { get; set; }

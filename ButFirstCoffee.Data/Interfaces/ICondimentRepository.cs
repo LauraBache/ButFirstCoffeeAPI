@@ -5,6 +5,7 @@ namespace ButFirstCoffee.Data
 {
     public interface ICondimentRepository
     {
+        Condiment GetCondiment(int condimentId);
         IEnumerable<Condiment> GetCondiments();
     }
 }

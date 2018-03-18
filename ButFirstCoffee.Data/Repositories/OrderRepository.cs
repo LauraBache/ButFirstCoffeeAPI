@@ -16,17 +16,12 @@ namespace ButFirstCoffee.Data
 
         public Order CreateOrder(Order order)
         {
-            if (order.OrderDate == DateTime.MinValue)
-            {
-                order.OrderDate = DateTime.Now;
-            }
-            order.Completed = false;
-
             foreach (OrderItem item in order.Items)
             {
                 Beverage beverage = _ctx.Beverages
                                         .Include(b => b.BeverageSales)
-                                        .Where(b => b.Id == item.Beverage.Id)
+                                            .ThenInclude(b => b.Sale)
+                                        .Where(b => b.Id == item.BeverageId)
                                         .FirstOrDefault();
 
                 item.Description = beverage.GetDescription();
@@ -39,8 +34,10 @@ namespace ButFirstCoffee.Data
             return order;
         }
 
-        public Order UpdateOrder(Order order)
+        public Order CompleteOrder(Order order)
         {
+            order.Completed = true;
+
             _ctx.Orders.Update(order);
             _ctx.SaveChanges();
 

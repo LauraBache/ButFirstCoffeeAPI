@@ -152,8 +152,8 @@ namespace ButFirstCoffee.Data
                 {
                     Name = "Sale on House Blend",
                     Description = "Try our amazing house blend with a 20 percent discount this week.",
-                    Type = ESaleType.On_Beverage,
-                    Percent = 20
+                    Percent = 20,
+                    Type = ESaleType.On_Beverage
                 };
                 _ctx.Sales.Add(houseSale);
 
@@ -161,8 +161,8 @@ namespace ButFirstCoffee.Data
                 {
                     Name = "Sale on Tiger Spice Chai",
                     Description = "Try David Rio's signature and award-winning Tiger Spice Chai with a 20 percent discount on the total product this week.",
-                    Type = ESaleType.On_TotalBeverage,
-                    Percent = 20
+                    Percent = 20,
+                    Type = ESaleType.On_Decorated_Beverage
                 };
                 _ctx.Sales.Add(chaiSale);
 

@@ -20,13 +20,13 @@ namespace ButFirstCoffee.Domain
             if (BeverageSales.Count > 0)
             {
                 DateTime currentDate = DateTime.Now;
-                List<BeverageSale> currentSales = BeverageSales.Where(s => s.DateFrom <= currentDate && s.DateTo > currentDate).ToList();
+                List<BeverageSale> currentSales = this.BeverageSales.Where(s => s.DateFrom <= currentDate && s.DateTo > currentDate).ToList();
 
                 if (currentSales.Count > 0)
                 {
                     foreach (BeverageSale beverageSale in currentSales)
                     {
-                        cost = cost - (this.Price * beverageSale.Sale.Percent);
+                        cost = cost - (this.Price / 100 * beverageSale.Sale.Percent);
                     }
                 }
             }

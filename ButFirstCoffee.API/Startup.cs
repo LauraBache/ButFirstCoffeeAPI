@@ -12,6 +12,7 @@ using ButFirstCoffee.Data;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace ButFirstCoffee.API
 {
@@ -39,11 +40,14 @@ namespace ButFirstCoffee.API
             services.AddTransient<IBeverageRepository, BeverageRepository>();
             services.AddTransient<IBeverageCategoryRepository, BeverageCategoryRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderItemRepository, OrderItemRepository>();
             services.AddTransient<ISaleRepository, SaleRepository>();
             services.AddTransient<ICondimentRepository, CondimentRepository>();
 
             services.AddMvc()
                 .AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,23 +60,17 @@ namespace ButFirstCoffee.API
                 // Seed the database
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
-                    // TODO using this kind of scope can be a little bit expensive, 
-                    //figure something out for production
-
                     var seeder = scope.ServiceProvider.GetService<CoffeeSeeder>();
                     seeder.Seed();
                 }
-
-                app.UseCors((cors) => cors.AllowAnyOrigin());
             }
 
-            app.UseCors((cors) => cors.AllowAnyOrigin());
-            if (env.IsProduction())
+            app.UseCors((cors) =>
             {
-                //TODO - implement customer frindly error handling
-
-               // app.UseCors((cors) => cors.WithOrigins("Angular app URL")); //TODO replace AZURE WEBAPI URL with a setting, that can be overridden
-            }
+                cors.AllowAnyOrigin();
+                cors.AllowAnyHeader();
+                cors.AllowAnyMethod();
+            });
 
             app.UseMvc();
         }

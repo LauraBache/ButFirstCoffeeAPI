@@ -13,6 +13,13 @@ namespace ButFirstCoffee.Data
             _ctx = ctx;
         }
 
+        public Condiment GetCondiment(int condimentId)
+        {
+            return _ctx.Condiments
+                        .Where(c => c.Id == condimentId)
+                        .FirstOrDefault();
+        }
+
         public IEnumerable<Condiment> GetCondiments()
         {
             IEnumerable<Condiment> condiments = _ctx.Condiments

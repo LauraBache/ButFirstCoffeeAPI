@@ -12,7 +12,7 @@ using System;
 namespace ButFirstCoffee.Data.Migrations
 {
     [DbContext(typeof(CoffeeContext))]
-    [Migration("20180317183101_init")]
+    [Migration("20180318184203_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

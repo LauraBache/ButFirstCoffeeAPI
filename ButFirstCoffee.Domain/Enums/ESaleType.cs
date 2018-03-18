@@ -7,6 +7,6 @@ namespace ButFirstCoffee.Domain
     public enum ESaleType
     {
         On_Beverage = 1,
-        On_TotalBeverage = 2
+        On_Decorated_Beverage = 2
     }
 }

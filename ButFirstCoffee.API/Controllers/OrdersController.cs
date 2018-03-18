@@ -79,19 +79,13 @@ namespace ButFirstCoffee.API.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
                 }
 
-                var oldOrder = _orderRepo.GetOrder(id);
-                if (oldOrder == null)
-                {
-                    return NotFound($"Could not find an order with an id of {id}");
-                }
-
-                var updatedOrder = _mapper.Map(model, oldOrder);
-                _orderRepo.UpdateOrder(updatedOrder);
+                var oldOrder = _orderRepo.GetOrderWithItems(id);
+                var updatedOrder = _orderRepo.CompleteOrder(oldOrder);
 
                 return Ok(_mapper.Map<OrderViewModel>(updatedOrder));
             }

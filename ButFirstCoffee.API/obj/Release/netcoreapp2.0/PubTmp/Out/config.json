@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "CoffeeConnectionString": "Server = (localdb)\\mssqllocaldb; DataBase = ButFirstCoffeeData; Integrated Security = True;"
+  }
+}

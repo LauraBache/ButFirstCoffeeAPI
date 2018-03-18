@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ButFirstCoffee.Data.Repositories
+namespace ButFirstCoffee.Data
 {
     public class OrderItemRepository : IOrderItemRepository
     {
@@ -20,7 +20,8 @@ namespace ButFirstCoffee.Data.Repositories
         {
             Beverage beverage = _ctx.Beverages
                                         .Include(b => b.BeverageSales)
-                                        .Where(b => b.Id == item.Beverage.Id)
+                                            .ThenInclude(b => b.Sale)
+                                        .Where(b => b.Id == item.BeverageId)
                                         .FirstOrDefault();
 
             item.Description = beverage.GetDescription();
@@ -32,8 +33,30 @@ namespace ButFirstCoffee.Data.Repositories
             return item;
         }
 
-        public OrderItem UpdateOrderItem(OrderItem item, int condimentId)
+        public OrderItem GetOrderItemWithBeverageAndSale(int itemId)
         {
+            return _ctx.OrderItems
+                        .Include(i => i.Beverage)
+                            .ThenInclude(b => b.BeverageSales)
+                                .ThenInclude(b => b.Sale)
+                        .Where(i => i.Id == itemId)
+                        .FirstOrDefault();
+        }
+
+        public OrderItem UpdateOrderItemWithCondiment(OrderItem item, Condiment condiment)
+        {
+            Beverage itemBeverage = new Beverage
+            {
+                Description = item.Description,
+                Price = item.UnitPrice,
+                BeverageSales = item.Beverage.BeverageSales
+            };
+
+            condiment.Beverage = itemBeverage;
+
+            item.Description = condiment.GetDescription();
+            item.UnitPrice = condiment.GetCost();
+
             _ctx.OrderItems.Update(item);
             _ctx.SaveChanges();
 

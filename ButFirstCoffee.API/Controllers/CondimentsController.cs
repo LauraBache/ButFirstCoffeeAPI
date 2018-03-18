@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ButFirstCoffee.Data;
+using ButFirstCoffee.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace ButFirstCoffee.API.Controllers
 {
     [Route("api/[Controller]")]
-    public class CondimentsController
+    public class CondimentsController : Controller
     {
         private readonly ICondimentRepository _condimentRepo;
         private readonly ILogger<CondimentsController> _logger;
@@ -21,6 +22,30 @@ namespace ButFirstCoffee.API.Controllers
             _condimentRepo = condimentRepo;
             _logger = logger;
             _mapper = mapper;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                var condiments = _condimentRepo.GetCondiments();
+
+                if (condiments.Count() > 0)
+                {
+                    return Ok(_mapper.Map<IEnumerable<Condiment>, IEnumerable<CondimentViewModel>>(condiments));
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get condiments: {ex}");
+
+                return BadRequest("Failed to get condiments");
+            }
         }
     }
 }
